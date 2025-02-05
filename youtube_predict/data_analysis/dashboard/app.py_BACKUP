@@ -12,9 +12,6 @@ st.title("📊 Fabrica de Monstros - Painel de Análise de Tendências")
 # Carregar os dados do banco SQLite
 df_videos = load_data()
 
-# Converter 'published_at' para datetime **somente uma vez**
-df_videos["published_at"] = pd.to_datetime(df_videos["published_at"], errors="coerce").dt.tz_localize(None)
-
 # Criar colunas para layout mais organizado
 col1, col2 = st.columns([1, 3])
 
@@ -32,20 +29,31 @@ df_filtered = df_videos.copy()
 if video_type != "Todos":
     df_filtered = df_filtered[df_filtered["video_type"] == video_type]
 
+# Converter a coluna 'published_at' para datetime, garantindo que todos os valores sejam comparáveis
+df_filtered["published_at"] = pd.to_datetime(df_filtered["published_at"], errors="coerce").dt.tz_localize(None)
+
 # Aplicar filtro de data
 if date_range and len(date_range) == 2:
-    start_date, end_date = pd.to_datetime(date_range).tz_localize(None)
+    start_date, end_date = date_range
+    start_date = pd.to_datetime(start_date).tz_localize(None)  # Garantir que não tenha fuso horário
+    end_date = pd.to_datetime(end_date).tz_localize(None)
+
     df_filtered = df_filtered[
         (df_filtered["published_at"] >= start_date) &
         (df_filtered["published_at"] <= end_date)
     ]
 
-# Criar abas para organizar os dados
+    
+    
+
+# Criar abas para organizar os dados **antes** de usá-las
 tab1, tab2 = st.tabs(["📊 Visualizações ao Longo do Tempo", "📈 Comparação de Shorts vs Longos"])
 
 # Verificar se há dados após o filtro
 if df_filtered.empty:
     st.warning("⚠️ Nenhum dado encontrado para os filtros aplicados.")
+    
+    # Interrompe a execução do restante do código para evitar erros
     st.stop()
 
 else:
@@ -58,14 +66,20 @@ else:
         st.metric("❤️ Média de Engajamento", round(media_engajamento, 3) if not pd.isna(media_engajamento) else "0")
 
     # Atualizar os gráficos com os dados filtrados
-    with tab1:
-        st.subheader("📈 Evolução das Visualizações")
+with tab1:
+    st.subheader("📈 Evolução das Visualizações")
 
-        # Agrupar os dados por dia (em vez de mês) para garantir flexibilidade no filtro
-        df_plot = df_filtered.groupby(df_filtered["published_at"].dt.date)["views"].sum().reset_index()
+    if df_filtered.empty:
+        st.warning("⚠️ Nenhum dado disponível para exibição no gráfico.")
+    else:
+        # Garantir que 'published_at' esteja formatado corretamente
+        df_filtered["published_at"] = pd.to_datetime(df_filtered["published_at"], errors="coerce").dt.tz_localize(None)
 
-        # Converter a coluna para datetime para evitar problemas de ordenação
-        df_plot["published_at"] = pd.to_datetime(df_plot["published_at"])
+        # Agrupar os dados por mês para visualização
+        df_plot = df_filtered.groupby(df_filtered["published_at"].dt.to_period("M"))["views"].sum().reset_index()
+
+        # Converter o período de volta para string para evitar erro no Streamlit
+        df_plot["published_at"] = df_plot["published_at"].astype(str)
 
         if df_plot.empty or df_plot["views"].sum() == 0:
             st.warning("⚠️ Nenhum dado disponível no período selecionado.")
@@ -84,6 +98,7 @@ else:
         file_name="youtube_videos_filtered.csv",
         mime="text/csv"
     )
+
 
 # Rodar o Streamlit:
 # No terminal, execute: streamlit run app.py
