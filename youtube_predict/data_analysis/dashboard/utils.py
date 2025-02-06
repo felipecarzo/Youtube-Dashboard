@@ -19,4 +19,12 @@ def load_data():
     # Evitar erro de divisão por zero ao calcular engajamento
     df["likes_per_view"] = df["likes"] / df["views"].replace(0, 1)
 
+      # Garantir que a coluna CTR esteja presente
+    if "ctr" not in df.columns:
+        df["ctr"] = None  # Se não existir, cria a coluna como NaN
+
+    # Garantir que a coluna `traffic_source` esteja presente
+    if "traffic_source" not in df.columns:
+        df["traffic_source"] = "Unknown"  # Se não existir, cria a coluna como "Unknown"
+
     return df
