@@ -159,3 +159,5 @@ with tab5:
 
 # Rodar o Streamlit:
 # No terminal, execute: streamlit run app.py
+
+testgit = test.git()
