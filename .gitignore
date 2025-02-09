@@ -1,0 +1,15 @@
+# Ignorar arquivos do MacOS
+.DS_Store
+
+# Ignorar ambiente virtual do Python
+venv/
+*.pyc
+__pycache__/
+
+# Ignorar arquivos de banco de dados e CSVs gerados
+*.db
+*.sqlite
+*.csv
+
+# Ignorar logs e arquivos temporários
+*.log

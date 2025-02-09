@@ -159,5 +159,3 @@ with tab5:
 
 # Rodar o Streamlit:
 # No terminal, execute: streamlit run app.py
-
-teste = load_data()
