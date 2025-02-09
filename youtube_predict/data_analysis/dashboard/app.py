@@ -108,3 +108,54 @@ with tab1:
     else:
         fig = px.line(df_plot, x="published_at", y="views", title="Visualizações ao Longo do Tempo")
         st.plotly_chart(fig, use_container_width=True)
+
+with tab2:
+    st.subheader("⏳ Correlação entre Duração do Vídeo e Visualizações")
+    if df_filtered.empty:
+        st.warning("⚠️ Nenhum dado disponível para exibição.")
+    else:
+        # Remover linhas com valores nulos ou zero em 'duration_sec' ou 'views'
+        df_plot = df_filtered.dropna(subset=['duration_sec', 'views'])
+        df_plot = df_plot[(df_plot['duration_sec'] > 0) & (df_plot['views'] > 0)]
+
+        if df_plot.empty:
+            st.warning("⚠️ Dados insuficientes após a limpeza para gerar o gráfico.")
+        else:
+            fig = px.scatter(df_plot, x=df_plot["duration_sec"] / 60, y="views", 
+                             title="Duração do Vídeo vs Visualizações", 
+                             labels={"x": "Duração (minutos)", "y": "Visualizações"})
+            st.plotly_chart(fig, use_container_width=True)
+
+with tab3:
+    st.subheader("💬 Comparação de Engajamento (Likes e Comentários) entre Shorts e Longos")
+    if df_filtered.empty:
+        st.warning("⚠️ Nenhum dado disponível para este período.")
+    else:
+        df_engajamento = df_filtered.groupby("video_type")[["likes", "comments"]].mean().reset_index()
+        fig = px.bar(df_engajamento, x="video_type", y=["likes", "comments"], barmode="group", 
+                     title="Engajamento Médio por Tipo de Vídeo")
+        st.plotly_chart(fig, use_container_width=True)
+
+# 📅 Desempenho por Dia da Semana
+with tab4:
+    st.subheader("📅 Desempenho por Dia da Semana")
+    if df_filtered.empty:
+        st.warning("⚠️ Nenhum dado disponível para exibição.")
+    else:
+        df_filtered["weekday"] = df_filtered["published_at"].dt.day_name()
+        df_plot = df_filtered.groupby("weekday")["views"].mean().reset_index()
+        fig = px.bar(df_plot, x="weekday", y="views", title="Média de Visualizações por Dia da Semana")
+        st.plotly_chart(fig, use_container_width=True)
+
+# 📏 Distribuição da Duração dos Vídeos
+with tab5:
+    st.subheader("📏 Distribuição da Duração dos Vídeos")
+    if df_filtered.empty:
+        st.warning("⚠️ Nenhum dado disponível para este período.")
+    else:
+        fig = px.histogram(df_filtered, x=df_filtered["duration_sec"] / 60, nbins=20, 
+                           title="Distribuição da Duração dos Vídeos", labels={"x": "Duração (minutos)"})
+        st.plotly_chart(fig, use_container_width=True)
+
+# Rodar o Streamlit:
+# No terminal, execute: streamlit run app.py
