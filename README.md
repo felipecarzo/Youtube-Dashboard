@@ -44,18 +44,18 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 
 ## Passos para Instalação e Execução
 1. Clone este repositório:
-```bash
+```
 git clone https://github.com/felipecarzo/Youtube-Dashboard
 ```
-	2.	Acesse o diretório do projeto:
+2.	Acesse o diretório do projeto:
 ```
 cd Youtube-Dashboard
 ```
-	3.	Instale as dependências:
+3.	Instale as dependências:
 ```
 pip install -r requirements.txt
 ```
-	4.	Execute o aplicativo Streamlit:
+4.	Execute o aplicativo Streamlit:
 ```
 streamlit run app.py
 ```
