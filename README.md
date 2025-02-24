@@ -11,25 +11,26 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 - **Modelagem Estatística**: Uso de técnicas estatísticas para análise e inferência de dados complexos.
 
 ## Estrutura do Repositório
-
-/Youtube-Dashboard <br>
-│── app.py                  # Arquivo principal do dashboard Streamlit <br>
-│── load_data.py            # Script para carregar e processar dados <br>
-│── utils.py                # Funções auxiliares para manipulação de dados <br>
-│── youtube_api_client.py   # Cliente da API do YouTube para coleta de dados <br>
-│ <br>
-│── models <br>
-│   ├── model_rf.pkl        # Modelo Random Forest serializado <br>
-│   ├── model_lr.pkl        # Modelo Linear Regression serializado <br>
-│ <br>
-│── data <br>
-│   ├── raw                 # Dados brutos coletados da API <br>
-│   ├── processed           # Dados processados para análise <br>
-│ <br>
+```
+/Youtube-Dashboard 
+│── app.py                  # Arquivo principal do dashboard Streamlit 
+│── load_data.py            # Script para carregar e processar dados 
+│── utils.py                # Funções auxiliares para manipulação de dados 
+│── youtube_api_client.py   # Cliente da API do YouTube para coleta de dados 
+│ 
+│── models 
+│   ├── model_rf.pkl        # Modelo Random Forest serializado 
+│   ├── model_lr.pkl        # Modelo Linear Regression serializado 
+│ 
+│── data 
+│   ├── raw                 # Dados brutos coletados da API 
+│   ├── processed           # Dados processados para análise 
+│ 
 │── notebooks               # Jupyter Notebooks para exploração de dados e prototipagem <br>
-│ <br>
-│── requirements.txt        # Dependências do projeto <br>
-│── README.md               # Documentação do projeto <br>
+│ 
+│── requirements.txt        # Dependências do projeto 
+│── README.md               # Documentação do projeto 
+```
 
 
 
