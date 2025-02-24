@@ -13,8 +13,7 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 ## Estrutura do Repositório
 
 /Youtube-Dashboard
-│── app.py                  # Arquivo principal do dashboard Streamlit
-│
+│── app.py                  # Arquivo principal do dashboard Streamlit <br>
 │── load_data.py            # Script para carregar e processar dados
 │
 │── utils.py                # Funções auxiliares para manipulação de dados
