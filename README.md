@@ -18,7 +18,7 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 │── utils.py                # Funções auxiliares para manipulação de dados <br>
 │── youtube_api_client.py   # Cliente da API do YouTube para coleta de dados <br>
 │ <br>
-│── models
+│── models <br>
 │   ├── model_rf.pkl        # Modelo Random Forest serializado <br>
 │   ├── model_lr.pkl        # Modelo Linear Regression serializado <br>
 │ <br>
