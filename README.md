@@ -17,15 +17,20 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 │── load_data.py            # Script para carregar e processar dados
 │── utils.py                # Funções auxiliares para manipulação de dados
 │── youtube_api_client.py   # Cliente da API do YouTube para coleta de dados
-│── models                  # Modelos de Machine Learning
+│
+│── models
 │   ├── model_rf.pkl        # Modelo Random Forest serializado
 │   ├── model_lr.pkl        # Modelo Linear Regression serializado
+│
 │── data
-│   ├── raw                  # Dados brutos coletados da API
-│   ├── processed            # Dados processados para análise
+│   ├── raw                 # Dados brutos coletados da API
+│   ├── processed           # Dados processados para análise
+│
 │── notebooks               # Jupyter Notebooks para exploração de dados e prototipagem
+│
 │── requirements.txt        # Dependências do projeto
 │── README.md               # Documentação do projeto
+
 
 ## Tecnologias Utilizadas
 - **Python**: Linguagem de programação para desenvolvimento do projeto.
