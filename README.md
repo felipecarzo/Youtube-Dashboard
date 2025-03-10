@@ -59,6 +59,5 @@ pip install -r requirements.txt
 ```
 streamlit run app.py
 ```
-Explore as visualizações interativas e obtenha insights valiosos sobre o desempenho dos seus vídeos no YouTube diretamente do seu navegador.
 
 Para mais informações, acesse o repositório do projeto.
