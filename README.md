@@ -1,7 +1,15 @@
 # YouTube Dashboard
 
 ## Descrição do Projeto
-O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximizar a compreensão do desempenho de conteúdos no YouTube. Utilizando técnicas avançadas de data science, este projeto permite que criadores de conteúdo e analistas de mídia visualizem, analisem e prevejam o desempenho de vídeos com base em uma série de métricas críticas como visualizações, engajamento, CTR, fontes de tráfego e demografia do público.
+O **YouTube Dashboard** é uma ferramenta analítica destinada a maximizar a compreensão do desempenho de conteúdos no YouTube. Utilizando técnicas avançadas de data science, este projeto permite que criadores de conteúdo e analistas de mídia visualizem, analisem e prevejam o desempenho de vídeos com base em uma série de métricas críticas como visualizações, engajamento, CTR, fontes de tráfego e demografia do público.
+
+## Tecnologias Utilizadas
+- **Python**: Linguagem de programação para desenvolvimento do projeto.
+- **Streamlit**: Framework para criação de aplicativos de dados na web.
+- **Plotly**: Biblioteca para visualização de dados interativos.
+- **Pandas/Numpy**: Bibliotecas para manipulação e análise de dados.
+- **Scikit-learn**: Ferramenta para construção de modelos de machine learning.
+- **SQLite**: Sistema de gerenciamento de banco de dados para armazenamento de dados.
 
 ## Conhecimentos Aplicados
 - **Análise Exploratória de Dados**: Manipulação e exploração de datasets usando pandas e numpy.
@@ -32,15 +40,6 @@ O **YouTube Dashboard** é uma ferramenta analítica robusta destinada a maximiz
 │── README.md               # Documentação do projeto 
 ```
 
-
-
-## Tecnologias Utilizadas
-- **Python**: Linguagem de programação para desenvolvimento do projeto.
-- **Streamlit**: Framework para criação de aplicativos de dados na web.
-- **Plotly**: Biblioteca para visualização de dados interativos.
-- **Pandas/Numpy**: Bibliotecas para manipulação e análise de dados.
-- **Scikit-learn**: Ferramenta para construção de modelos de machine learning.
-- **SQLite**: Sistema de gerenciamento de banco de dados para armazenamento de dados.
 
 ## Passos para Instalação e Execução
 1. Clone este repositório:
